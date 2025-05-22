@@ -1,0 +1,17 @@
+README.md
+setup.py
+selfdb/__init__.py
+selfdb/auth.py
+selfdb/auth_client.py
+selfdb/client.py
+selfdb/exceptions.py
+selfdb/query_builder.py
+selfdb/storage.py
+selfdb/storage_client.py
+selfdb/tables.py
+selfdb.egg-info/PKG-INFO
+selfdb.egg-info/SOURCES.txt
+selfdb.egg-info/dependency_links.txt
+selfdb.egg-info/requires.txt
+selfdb.egg-info/top_level.txt
+tests/test_client.py
