@@ -12,11 +12,11 @@ class TestSelfDBClient(unittest.TestCase):
     
     def setUp(self):
         """Set up test fixtures."""
-        self.client = SelfDBClient(baseurl="http://example.com/api/v1")
+        self.client = SelfDBClient(baseurl="http://localhost:8000/api/v1")
     
     def test_initialization(self):
         """Test client initialization."""
-        self.assertEqual(self.client.baseurl, "http://example.com/api/v1")
+        self.assertEqual(self.client.baseurl, "http://localhost:8000/api/v1")
         self.assertIsNone(self.client.anon_key)
         self.assertIsNone(self.client.access_token)
         self.assertIsNone(self.client.refresh_token)
@@ -24,7 +24,7 @@ class TestSelfDBClient(unittest.TestCase):
     def test_initialization_with_anon_key(self):
         """Test client initialization with anon key."""
         client = SelfDBClient(
-            baseurl="http://example.com/api/v1",
+            baseurl="http://localhost:8000/api/v1",
             anon_key="test-anon-key"
         )
         self.assertEqual(client.anon_key, "test-anon-key")
@@ -32,10 +32,10 @@ class TestSelfDBClient(unittest.TestCase):
     def test_initialization_with_storage_url(self):
         """Test client initialization with storage URL."""
         client = SelfDBClient(
-            baseurl="http://example.com/api/v1",
-            storageurl="http://storage.example.com"
+            baseurl="http://localhost:8000/api/v1",
+            storageurl="http://localhost:8001"
         )
-        self.assertEqual(client.storageurl, "http://storage.example.com")
+        self.assertEqual(client.storageurl, "http://localhost:8001")
     
     @patch('selfdb.client.requests.Session.request')
     def test_login(self, mock_request):
@@ -91,7 +91,7 @@ class TestSelfDBClient(unittest.TestCase):
         mock_response = MagicMock()
         mock_response.status_code = 404
         mock_response.ok = False
-        mock_response.url = "http://example.com/api/v1/tables/nonexistent"
+        mock_response.url = "http://localhost:8000/api/v1/tables/nonexistent"
         mock_request.return_value = mock_response
         
         # Call method and check exception

@@ -13,7 +13,7 @@ import dotenv
 dotenv.load_dotenv()
 
 # Add the parent directory to the path for importing the library
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+#sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from selfdb import SelfDB
 
