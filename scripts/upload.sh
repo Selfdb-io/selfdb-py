@@ -1,1 +1,0 @@
-cd "$(dirname "$0")/.." && twine upload dist/*

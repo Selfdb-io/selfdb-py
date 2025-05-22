@@ -1,0 +1,32 @@
+#!/bin/bash
+# Template for PyPI upload script
+# To use:
+# 1. Copy this file to upload.sh
+# 2. Run: export PYPI_API_TOKEN=your-token-here
+# 3. Execute ./upload.sh
+
+cd "$(dirname "$0")/.."
+
+# Check if PYPI_API_TOKEN is set
+if [ -z "$PYPI_API_TOKEN" ]; then
+  echo "Error: PYPI_API_TOKEN environment variable is not set."
+  echo "Please set it with: export PYPI_API_TOKEN=your-token-here"
+  exit 1
+fi
+
+# Create temporary .pypirc file
+cat > ~/.pypirc << EOF
+[pypi]
+  username = __token__
+  password = $PYPI_API_TOKEN
+EOF
+
+# Set appropriate permissions for .pypirc
+chmod 600 ~/.pypirc
+
+echo "Uploading packages to PyPI..."
+twine upload dist/*
+
+# Clean up the temporary .pypirc file
+rm ~/.pypirc
+echo "Upload complete and credentials cleaned up." 
