@@ -5,14 +5,10 @@ This sample demonstrates creating a user for testing purposes.
 """
 
 import os
-import sys
 import dotenv
 
 # Load .env file
 dotenv.load_dotenv()
-
-# Add the parent directory to the path for importing the library
-#sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from selfdb import SelfDB
 from selfdb.exceptions import SelfDBException
